@@ -1,14 +1,13 @@
 import React from 'react'
-import './Button.css'
+import classes from './Button.css'
 
 
 export default function Button(props) {
+
     return (
         <button
             disabled={props.disabled}
-            // className={[classes.Button, classes[props.btnType]].join(' ')}
-            className='Button Success'
-
+            className={[classes.Button, classes[props.btnType]].join(' ')}
             onClick={props.clicked}>
             {props.children}
         </button>

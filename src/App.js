@@ -1,14 +1,13 @@
 import React from 'react';
-import Todo from './components/Todo/Todo'
+import Form from './containers/Form/Form'
 
 
 function App() {
   return (
     <div>
-      <Todo />
-      <Todo />
-      <Todo />
-      <Todo />
+
+      <Form />
+
     </div>
   );
 }

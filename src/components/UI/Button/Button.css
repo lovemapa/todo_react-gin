@@ -1,13 +1,15 @@
 .Button {
-    background-color: transparent;
+    background-color:transparent;
     border: none;
-    color: black;
+    color: rgb(255, 255, 255);
     outline: none;
     cursor: pointer;
     font: inherit;
     padding: 10px;
     margin: 10px;
     font-weight: bold;
+    transition-duration: 0.4s;
+    
 }
 
 .Button:first-of-type {
@@ -26,4 +28,8 @@ cursor: not-allowed;
 
 .Danger {
     color: #944317;
+}
+
+.Button:hover{
+    color:navy;
 }

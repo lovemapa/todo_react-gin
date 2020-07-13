@@ -1,0 +1,27 @@
+.Form{
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+    box-shadow: 0 2px 3px #dbd0d0;
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+
+}
+
+.h4{
+
+height: 30px;
+background-color: rgb(40, 41, 65);
+color: white;
+text-align: inherit;
+}
+
+@media(min-width:600px){
+    .Form{
+  
+  width: 500px;
+
+}
+
+}

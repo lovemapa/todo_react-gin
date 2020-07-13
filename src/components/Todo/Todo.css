@@ -7,6 +7,24 @@
     box-shadow: 0 2px 3px #ccc;
     margin: 10px;
     box-sizing: border-box;
-    cursor: pointer;
-;
+
+}
+
+.Todo:hover{
+    background-color: rgb(213, 217, 223);
+}
+
+
+.strong{
+    color: navy;
+    content:" "; 
+    display:inline-block; 
+    
+}
+
+
+.Name{
+
+    text-transform: capitalize;
+    font-size: larger;
 }
