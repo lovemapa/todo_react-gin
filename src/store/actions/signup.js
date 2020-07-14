@@ -47,7 +47,8 @@ export const signup = (userInfo) => {
                 dispatch(onSignupSuccess(response.data.data))
 
             }).catch(err => {
-                dispatch(onSignupError(err.response))
+                
+                dispatch(onSignupError(err.response.data.error))
 
             })
 

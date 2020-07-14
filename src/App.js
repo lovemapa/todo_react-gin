@@ -1,15 +1,18 @@
 import React from 'react';
 import Form from './containers/Form/Form'
+import NetworkError from './hoc/NetworkError'
+
+function App(props) {
 
 
-function App() {
   return (
     <div>
 
-      <Form />
+      <Form isDisconnected={props.isDisconnected} />
 
     </div>
   );
 }
 
-export default App;
+
+export default NetworkError(App);

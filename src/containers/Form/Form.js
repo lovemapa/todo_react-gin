@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Input from '../../components/UI/Input/Input'
 import Button from '../../components/UI/Button/Button'
+import Spinner from '../../components/UI/Spinner/Spinner'
 import classes from './Form.css'
 import { connect } from "react-redux";
 import * as actions from '../../store/actions/index'
@@ -100,6 +101,7 @@ class Form extends Component {
         return isValid
     }
 
+
     inputChangeHandler = (event, formIdentifier) => {
 
 
@@ -139,10 +141,10 @@ class Form extends Component {
 
 
         this.props.onSubmitForm(formData)
+
     }
 
     render() {
-
 
         const formArray = []
         for (let key in this.state.contactForm) {
@@ -151,6 +153,7 @@ class Form extends Component {
                 config: this.state.contactForm[key]
             })
         }
+
 
 
         let form = (<form
@@ -171,16 +174,38 @@ class Form extends Component {
 
                 })
             }
-            <Button disabled={!this.state.formIsValid} btnType="Success"> Order</Button>
+
+            <Button disabled={!this.state.formIsValid || this.props.isDisconnected} btnType="Success"> Submit</Button>
 
         </form>)
+
+        if (this.props.loading)
+            form = <Spinner />
+
+        let Message = null
+        if (this.props.error) {
+            Message = (<h4 className={classes.error}>
+                {this.props.error}
+            </h4>)
+        }
+
         return (
-            <div>
+            <div >
                 {form}
-            </div>
+                {Message}
+            </div >
         )
     }
 }
+
+
+const mapStateToprops = state => {
+    return {
+        loading: state.signup.loading,
+        error: state.signup.error,
+    }
+}
+
 
 const mapDispatchStateToProps = dispatch => {
     return {
@@ -188,4 +213,4 @@ const mapDispatchStateToProps = dispatch => {
     }
 
 }
-export default connect(null, mapDispatchStateToProps)(Form)
+export default connect(mapStateToprops, mapDispatchStateToProps)(Form)

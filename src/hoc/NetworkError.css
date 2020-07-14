@@ -1,0 +1,16 @@
+.internetError {
+
+   margin: 20px auto;
+    width: 38.5%;
+    text-align: center;
+  background: #ff8100;
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.internetError p {
+  font-size: 25px;
+  line-height: 60px;
+  color: #fff;
+  margin: 0;
+}
