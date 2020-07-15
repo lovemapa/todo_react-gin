@@ -17,20 +17,19 @@ export default class Todos extends Component {
 
     componentDidMount() {
 
-        // let token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE1OTM3NjgyNDQwMDAsInVzZXJfaWQiOiI1ZWZlZjkyNWMzN2U4ZTMxMTVlMDllOTEifQ.DHh35SLMOY71fkTTxld5VU22KA-qz-doeEZRP3pyJP4`
-        axios.get('todo/getTodos',
-        ).then(response => {
+        // axios.get('todo/getTodos',
+        // ).then(response => {
 
-            let fetchedTodo = []
-            fetchedTodo = response.data
-            console.log(fetchedTodo.data);
+        //     let fetchedTodo = []
+        //     fetchedTodo = response.data
 
-            this.setState({ todos: fetchedTodo.data })
 
-        }).catch(err => {
-            console.log(err);
+        //     this.setState({ todos: fetchedTodo.data })
 
-        })
+        // }).catch(err => {
+        //     console.log(err);
+
+        // })
     }
     render() {
 

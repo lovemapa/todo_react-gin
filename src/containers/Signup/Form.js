@@ -5,6 +5,7 @@ import Spinner from '../../components/UI/Spinner/Spinner'
 import classes from './Form.css'
 import { connect } from "react-redux";
 import * as actions from '../../store/actions/index'
+import { Link } from 'react-router-dom'
 
 class Form extends Component {
 
@@ -139,7 +140,6 @@ class Form extends Component {
             formData[formId] = this.state.contactForm[formId].value
         }
 
-
         this.props.onSubmitForm(formData)
 
     }
@@ -176,6 +176,9 @@ class Form extends Component {
             }
 
             <Button disabled={!this.state.formIsValid || this.props.isDisconnected} btnType="Success"> Submit</Button>
+            <div>
+                <Link to="/">Click here to sign In</Link>
+            </div>
 
         </form>)
 
