@@ -8,6 +8,7 @@ import { connect } from "react-redux"
 import * as actions from './store/actions/index'
 import Logout from './containers/Auth/Logout/Logout'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
+import Todos from './containers/Todos/Todos'
 
 class App extends Component {
 
@@ -31,7 +32,8 @@ class App extends Component {
     if (this.props.isAuthenticated) router = (
       <Switch>
         <Route path="/logout" component={Logout} />
-        <Route exact path="/" component={Login} />
+        <Route exact path="/" component={Todos} />
+
         {/* <Route path="/" exact component={Login} /> */}
         <Redirect to="/" />
       </Switch>
@@ -42,9 +44,9 @@ class App extends Component {
 
     return (
       <div>
-
         <Navitems isAuth={this.props.isAuthenticated} />
         {router}
+
         {/* <Form isDisconnected={props.isDisconnected} /> */}
       </div>
     )
