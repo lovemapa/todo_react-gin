@@ -9,11 +9,13 @@ import { Provider } from 'react-redux'
 import signReducer from './store/reducers/signup'
 import authReducer from './store/reducers/auth'
 import todoReducer from "./store/reducers/todo";
+import newTodoReducer from './store/reducers/new-todo'
 import thunk from 'redux-thunk'
 
 
 const rootReducer = combineReducers({
   signup: signReducer,
+  newTodo: newTodoReducer,
   auth: authReducer,
   todo: todoReducer,
 })

@@ -7,6 +7,7 @@ import Login from './containers/Auth/Auth'
 import { connect } from "react-redux"
 import * as actions from './store/actions/index'
 import Logout from './containers/Auth/Logout/Logout'
+import NewTodo from './containers/NewTodo/NewTodo'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 import Todos from './containers/Todos/Todos'
 
@@ -32,6 +33,7 @@ class App extends Component {
     if (this.props.isAuthenticated) router = (
       <Switch>
         <Route path="/logout" component={Logout} />
+        <Route path="/new-Todo" component={NewTodo} />
         <Route exact path="/" component={Todos} />
 
         {/* <Route path="/" exact component={Login} /> */}

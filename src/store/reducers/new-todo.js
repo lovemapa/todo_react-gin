@@ -1,37 +1,41 @@
 import * as actionTypes from '../actions/actionTypes'
-
-const initialState = {
-
+const initailState = {
+    todo: null,
     error: null,
-    loading: false,
-    data: {}
+    loading: false
 }
 
 
-const reducer = (state = initialState, actions) => {
 
+const reducer = (state = initailState, actions) => {
 
     switch (actions.type) {
-        case actionTypes.INITIALIZE_SIGNUP:
-            return {
-                ...state,
-                loading: true,
-                error: null
-            }
 
-        case actionTypes.SIGNUP_SUCCESS:
+        case actionTypes.NEW_TODO_INIT: {
+
             return {
                 ...state,
-                loading: false,
-                data: actions.data,
+                loading: true
+            }
+        }
+        case actionTypes.NEW_TODO_SUCCESS: {
+
+            return {
+                ...state,
+                todo: actions.todo,
                 error: false,
+                loading: false
             }
-        case actionTypes.SIGNUP_FAIL:
+        }
+
+        case actionTypes.NEW_TODO_FAIL: {
+
             return {
                 ...state,
-                loading: false,
                 error: actions.error,
+                loading: false
             }
+        }
 
 
         default: return state

@@ -6,7 +6,7 @@ import Spinner from '../../components/UI/Spinner/Spinner'
 import classes from './Auth.css'
 // import NetworkError from '../../hoc/NetworkError/NetworkError'
 import * as actions from '../../store/actions/index'
-
+import TodoImage from '../../assets/images/todo-4783676_1280.png'
 
 class Auth extends Component {
     state = {
@@ -37,7 +37,7 @@ class Auth extends Component {
                 validation: {
                     required: true,
                     minLength: 3
-                    
+
 
                 },
                 valid: false,
@@ -134,14 +134,18 @@ class Auth extends Component {
 
 
         return (
-            <div hidden={this.props.isAuthenticated} className={classes.Auth}>
+            // <div style={{ backgroundImage: "url(" + TodoImage + ")"  }}>
+            //     {/* <img src={TodoImage} alt="My Todo App"></img> */}
+            <div
+                hidden={this.props.isAuthenticated} className={classes.Auth}>
 
                 {errorMessage}
-                <form  onSubmit={this.submitFormHandler} >
+                <form onSubmit={this.submitFormHandler} >
                     {form}
                     <Button btnType="Success"> Sign In</Button>
                 </form >
-            </div >
+                {/* </div > */}
+            </div>
         )
     }
 }

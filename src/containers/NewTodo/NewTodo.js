@@ -1,39 +1,66 @@
 import React, { Component } from 'react'
 import classes from './NewTodo.css'
-import axios from '../../axios-todo'
+import * as actions from '../../store/actions/index'
+import { connect } from 'react-redux'
+import Spinner from '../../components/UI/Spinner/Spinner'
 
-export default class NewTodo extends Component {
+class NewTodo extends Component {
 
     state = {
-        name: ''
+        name: ""
     }
 
     todoDataHandler = (event) => {
 
-        const postData = {
-            name: this.state.name,
-        }
+        this.props.onAddTodo(this.state.name, this.props.token)
 
-        axios.post('todo/create', postData)
-            .then(response => {
-                console.log(response);
-                this.setState({ submitted: true })
-
-            }).catch(e => { throw e })
     }
+
     render() {
+
+
+        let form = (<div>
+            <h1>Add a New Todo</h1>
+            <label>Content</label>
+            <textarea rows="4"
+                name="name"
+                value={this.state.name}
+                onChange={(event) => this.setState({ name: event.target.value })}
+            />
+
+            <button onClick={this.todoDataHandler}>Add</button>
+        </div>)
+
+
+        if (this.props.loading)
+            form = <Spinner/>
         return (
             <div className={classes.NewTodo}>
-                {/* {redirect} */}
-                <h1>Add a New Todo</h1>
-                <label>Content</label>
-                <textarea rows="4"
-                    value={this.state.name}
-                    onChange={(event) => this.setState({ name: event.target.value })}
-                />
+                {form}
 
-                <button onClick={this.todoDataHandler}>Add</button>
             </div>
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        token: state.auth.token,
+        loading: state.newTodo.loading,
+        error: state.newTodo.error,
+        todo: state.newTodo.todo,
+    }
+
+}
+
+
+const mapDispatchToProps = dispatch => {
+    return {
+
+        onAddTodo: (newTodo, token) => dispatch(actions.newTodo(newTodo, token))
+    }
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewTodo)

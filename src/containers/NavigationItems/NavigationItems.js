@@ -11,7 +11,7 @@ export default function NavigationItems(props) {
         <Aux>
             <ul className={classes.NavigationItems}>
 
-                {props.isAuth ? <Navitem link="/todos">My Todos</Navitem> : null}
+                {props.isAuth ? <Navitem link="/">My Todos</Navitem> : null}
                 {props.isAuth ? <Navitem link="/new-Todo">New Todo</Navitem> : null}
                 {!props.isAuth ? <Navitem link="/signUp" >Signup</Navitem>
                     :
