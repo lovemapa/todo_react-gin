@@ -1,0 +1,41 @@
+.Modal  {
+    position: fixed;
+    z-index: 500;
+    background-color: white;
+    width: 60%;
+    border: 1px solid rgb(189, 84, 84);
+    box-shadow: 1px 1px 1px black;
+    padding: 16px;
+    left: 15%;
+    top: 18%;
+    box-sizing: border-box;
+    opacity:1.2 !important;
+    transition: all 0.3s ease-out;
+}
+
+@media (min-width: 600px) {
+    .Modal {
+        width: 500px;
+        left: calc(50% - 250px);
+    }
+}
+
+
+.Button{
+    position: fixed;
+    z-index: 500;
+    font-weight: bold;
+    background-color: rgb(184, 13, 13);
+    color: white;
+    border: 1px solid rgb(189, 169, 169);
+    box-shadow: 1px 1px 1px black;
+    padding: 16px;
+    left: 45%;
+    border-radius: 8px;
+    top: 18%;
+    font-size: 8px;
+    box-sizing: border-box;
+    opacity:1.2 !important;
+    transition: all 0.5s ease-out;
+}
+

@@ -1,0 +1,100 @@
+import React, { Component } from 'react'
+import { Redirect } from 'react-router'
+
+import classes from './Modal.css'
+import Aux from '../../hoc/Aux/Aux'
+import Backdrop from '../UI/Backdrop/Backdrop'
+import { connect } from 'react-redux'
+import * as actions from '../../store/actions/index'
+
+class Modal extends Component {
+
+    state = {
+        textarea: ''
+    }
+
+
+
+    componentDidUpdate(prevProps) {
+
+        if (this.props.todo !== prevProps.todo)
+            this.setState({ textarea: this.props.todo.name + ' ' })
+
+
+    }
+
+    handleChange = (event) => {
+
+
+        let name = event.target.value
+
+        this.setState(prevState => {
+
+            return { textarea: name }
+        })
+
+    }
+
+    updateTodo = () => {
+        this.props.onUpdate(this.props.todo._id, this.state.textarea, this.props.token)
+        // this.props.history.push('/')
+
+    }
+
+    render() {
+
+        return (
+            <Aux>
+                <Backdrop show={this.props.show} Clicked={this.props.modalClosed} />
+
+                <div
+                    className={classes.Modal}
+                    style={{
+                        transform: this.props.show ? 'translateY(0)' : 'translateY(-100vH)',
+                        opacity: this.props.show ? '1' : '0'
+                    }}
+                >
+                    <textarea
+
+                        rows="4"
+                        name="name"
+                        value={this.state.textarea}
+
+                        onChange={(event) => this.handleChange(event)}
+                    />
+
+                    <button
+                        hidden={!this.props.show}
+                        className={classes.Button}
+                        onClick={this.updateTodo}
+                    > Update</button>
+
+
+                </div>
+
+
+
+            </Aux>
+        )
+    }
+}
+
+
+const mapStateToProps = state => {
+
+    return {
+        token: state.auth.token,
+        todo: state.getTodo.todo
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onUpdate: (todoId, todo, token) => dispatch(actions.updateTodo(todoId, todo, token))
+    }
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Modal)
+

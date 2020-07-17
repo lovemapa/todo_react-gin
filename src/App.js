@@ -46,6 +46,7 @@ class App extends Component {
 
     return (
       <div>
+        {/* <img src={TodoImage} alt="My Todo App"></img> */}
         <Navitems isAuth={this.props.isAuthenticated} />
         {router}
 

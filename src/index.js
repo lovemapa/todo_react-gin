@@ -10,13 +10,17 @@ import signReducer from './store/reducers/signup'
 import authReducer from './store/reducers/auth'
 import todoReducer from "./store/reducers/todo";
 import newTodoReducer from './store/reducers/new-todo'
+import getTodoReducer from './store/reducers/getTodo';
+import updateTodoReducer from './store/reducers/update-todo'
 import thunk from 'redux-thunk'
 
 
 const rootReducer = combineReducers({
   signup: signReducer,
   newTodo: newTodoReducer,
+  getTodo: getTodoReducer,
   auth: authReducer,
+  update: updateTodoReducer,
   todo: todoReducer,
 })
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import classes from './NewTodo.css'
 import * as actions from '../../store/actions/index'
 import { connect } from 'react-redux'
+
 import Spinner from '../../components/UI/Spinner/Spinner'
 
 class NewTodo extends Component {
@@ -19,7 +20,7 @@ class NewTodo extends Component {
     render() {
 
 
-        let form = (<div>
+        let todo = (<div>
             <h1>Add a New Todo</h1>
             <label>Content</label>
             <textarea rows="4"
@@ -33,10 +34,11 @@ class NewTodo extends Component {
 
 
         if (this.props.loading)
-            form = <Spinner/>
+            todo = <Spinner />
         return (
+            
             <div className={classes.NewTodo}>
-                {form}
+                {todo}
 
             </div>
         )

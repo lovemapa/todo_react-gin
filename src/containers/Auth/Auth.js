@@ -6,7 +6,7 @@ import Spinner from '../../components/UI/Spinner/Spinner'
 import classes from './Auth.css'
 // import NetworkError from '../../hoc/NetworkError/NetworkError'
 import * as actions from '../../store/actions/index'
-import TodoImage from '../../assets/images/todo-4783676_1280.png'
+
 
 class Auth extends Component {
     state = {

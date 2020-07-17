@@ -1,53 +1,54 @@
 import * as actionTypes from './actionTypes'
+
 import axios from '../../axios-todo'
 
-export const newTodoInit = () => {
+export const getTodoInit = () => {
     return {
-        type: actionTypes.NEW_TODO_INIT
+        type: actionTypes.GET_TODO_INIT
     }
 }
 
-export const newTodoSuccess = (todo) => {
+export const getTodoSuccess = (todo) => {
     return {
-        type: actionTypes.NEW_TODO_SUCCESS,
+        type: actionTypes.GET_TODO_SUCCESS,
         todo: todo
     }
 }
 
-export const newTodoFail = (error) => {
+export const getTodoFail = (error) => {
 
 
     return {
-        type: actionTypes.NEW_TODO_FAIL,
+        type: actionTypes.GET_TODO_FAIL,
         error: error
     }
 }
 
-export const newTodo = (todoData, token) => {
+export const getTodo = (postId, token) => {
 
     return dispatch => {
 
-        dispatch(newTodoInit())
-
+        dispatch(getTodoInit())
         const options = {
-            method: 'post',
-            data: { name: todoData },
+            method: 'get',
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Credentials': 'true',
                 'token': token
             },
-            url: 'todo/create',
+            url: `todo/getTodo/${postId}`,
         }
         axios(options).then(response => {
 
-            dispatch(newTodoSuccess(response.data.data))
+            dispatch(getTodoSuccess(response.data.data))
 
         }).catch(error => {
             console.log(error);
-            dispatch(newTodoFail(error.response))
+            dispatch(getTodoFail(error.response))
 
 
         })
     }
 }
+
+
