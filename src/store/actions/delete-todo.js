@@ -54,7 +54,7 @@ export const deleteTodo = (todoId, token) => {
             dispatch(deletedFetch(todoId))
 
         }).catch(error => {
-            console.log(error);
+        
             dispatch(deleteTodoFail(error.response))
 
 

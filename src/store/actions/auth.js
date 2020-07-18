@@ -58,8 +58,7 @@ export const auth = (email, password) => {
                 dispatch(authSuccess(response.data.data.token, response.data.data.id))
                 dispatch(checkAuthExpired(response.data.data.tokenExpiresAt / 1000))
             }).catch(error => {
-                console.log(error.response.data.error);
-
+                
                 dispatch(authFail(error.response.data.error))
             })
     }

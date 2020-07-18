@@ -44,7 +44,7 @@ export const newTodo = (todoData, token) => {
             dispatch(newTodoSuccess(response.data.data))
 
         }).catch(error => {
-            console.log(error);
+            
             dispatch(newTodoFail(error.response))
 
 
