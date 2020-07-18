@@ -5,8 +5,9 @@ import moment from 'moment'
 
 export default function Todo(props) {
 
+
     return (
-        <div>
+        <div >
             <div className={classes.Todo} onClick={props.clicked}>
                 <h4 className={classes.Name}>{props.name}</h4>
               Created At : <strong className={classes.strong}>

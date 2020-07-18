@@ -10,6 +10,7 @@ import Logout from './containers/Auth/Logout/Logout'
 import NewTodo from './containers/NewTodo/NewTodo'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 import Todos from './containers/Todos/Todos'
+import NetworkError from './hoc/NetworkError/NetworkError'
 
 class App extends Component {
 

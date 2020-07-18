@@ -12,6 +12,7 @@ import todoReducer from "./store/reducers/todo";
 import newTodoReducer from './store/reducers/new-todo'
 import getTodoReducer from './store/reducers/getTodo';
 import updateTodoReducer from './store/reducers/update-todo'
+
 import thunk from 'redux-thunk'
 
 

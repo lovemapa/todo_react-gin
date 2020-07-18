@@ -11,13 +11,27 @@ class Todos extends Component {
 
     state = {
         name: '',
+        todos: [],
         isModalVisible: false,
 
     }
 
+    // componentDidUpdate(prevProps) {
+
+    //     if (prevProps.todos != this.props.todos) {
+    //         // console.log(prevProps.todos);
+
+    //     }
+
+
+    // }
+
+
 
     componentDidMount() {
+
         this.props.onFetchTodos(this.props.token)
+
     }
 
 
@@ -33,15 +47,18 @@ class Todos extends Component {
     }
 
     modalClosedHandler = () => {
+
         this.setState({ isModalVisible: false })
+
     }
 
 
     render() {
 
-
         return (
+
             <div >
+
                 <Modal
                     show={this.state.isModalVisible}
                     modalClosed={this.modalClosedHandler}
@@ -49,8 +66,8 @@ class Todos extends Component {
 
                 {this.props.todos.map(todo => (
                     <Todo
-                        clicked={() => { this.clickedHandler(todo._id) }}
                         key={todo._id}
+                        clicked={() => { this.clickedHandler(todo._id) }}
                         name={todo.name}
                         date={todo.date}
                         status={todo.status}
@@ -67,6 +84,7 @@ class Todos extends Component {
 
 
 const mapStateToProps = state => {
+
 
     return {
         todos: state.todo.todos,

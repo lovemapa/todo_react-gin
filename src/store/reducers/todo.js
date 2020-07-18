@@ -19,15 +19,33 @@ const todoReducer = (state = initialState, actions) => {
                 loading: true
             }
         }
+
+        case actionTypes.UPDATED_FETCH: {
+
+            let _id = actions.todo._id
+
+            let arr = [...state.todos] // right way for immutabilty
+            let index = arr.findIndex(each => {
+                return each._id === _id
+            })
+            arr[index] = actions.todo
+            return {
+                ...state,
+                todos: arr,
+                loading: false,
+                erro: false
+
+            }
+        }
+
         case actionTypes.FETCH_TODOS_SUCCESS: {
 
-            
 
             return {
                 ...state,
                 loading: false,
                 todos: actions.todos,
-                error:false
+                error: false
             }
         }
         case actionTypes.FETCH_TODOS_FAIL: {

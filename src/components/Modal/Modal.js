@@ -1,24 +1,28 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router'
+import { Redirect, Route } from 'react-router'
 
 import classes from './Modal.css'
 import Aux from '../../hoc/Aux/Aux'
 import Backdrop from '../UI/Backdrop/Backdrop'
 import { connect } from 'react-redux'
 import * as actions from '../../store/actions/index'
+import Spinner from '../UI/Spinner/Spinner'
 
 class Modal extends Component {
 
     state = {
-        textarea: ''
+        textarea: '',
+        modalClosed: this.props.modalClosed,
+        show: this.props.show
     }
 
 
 
     componentDidUpdate(prevProps) {
 
+
         if (this.props.todo !== prevProps.todo)
-            this.setState({ textarea: this.props.todo.name + ' ' })
+            this.setState({ textarea: this.props.todo.name })
 
 
     }
@@ -36,10 +40,12 @@ class Modal extends Component {
     }
 
     updateTodo = () => {
+
         this.props.onUpdate(this.props.todo._id, this.state.textarea, this.props.token)
-        // this.props.history.push('/')
+        this.props.modalClosed()
 
     }
+
 
     render() {
 
@@ -64,7 +70,7 @@ class Modal extends Component {
                     />
 
                     <button
-                        hidden={!this.props.show}
+
                         className={classes.Button}
                         onClick={this.updateTodo}
                     > Update</button>
@@ -74,7 +80,7 @@ class Modal extends Component {
 
 
 
-            </Aux>
+            </Aux >
         )
     }
 }
@@ -84,7 +90,8 @@ const mapStateToProps = state => {
 
     return {
         token: state.auth.token,
-        todo: state.getTodo.todo
+        todo: state.getTodo.todo,
+        loading: state.update.loading
     }
 }
 

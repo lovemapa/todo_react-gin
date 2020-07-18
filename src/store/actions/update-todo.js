@@ -25,6 +25,15 @@ export const updateTodoSuccess = (todo) => {
     }
 }
 
+export const updatedFetch = (todo) => {
+
+    return {
+        type: actionTypes.UPDATED_FETCH,
+        todo: todo
+    }
+
+}
+
 
 export const updateTodo = (todoId, todo, token) => {
 
@@ -43,8 +52,8 @@ export const updateTodo = (todoId, todo, token) => {
         }
         axios(options).then(response => {
 
-
             dispatch(updateTodoSuccess(response.data.data))
+            dispatch(updatedFetch(response.data.data))
 
         }).catch(error => {
             console.log(error);
