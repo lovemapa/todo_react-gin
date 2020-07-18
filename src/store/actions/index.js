@@ -9,3 +9,5 @@ export { newTodo } from './new-todo'
 export { getTodo } from './getTodo'
 
 export { updateTodo } from './update-todo'
+
+export { deleteTodo } from './delete-todo'

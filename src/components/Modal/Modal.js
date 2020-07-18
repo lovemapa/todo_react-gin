@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
-import { Redirect, Route } from 'react-router'
-
 import classes from './Modal.css'
 import Aux from '../../hoc/Aux/Aux'
 import Backdrop from '../UI/Backdrop/Backdrop'
 import { connect } from 'react-redux'
 import * as actions from '../../store/actions/index'
-import Spinner from '../UI/Spinner/Spinner'
+
 
 class Modal extends Component {
 
@@ -86,18 +84,21 @@ class Modal extends Component {
 }
 
 
+
 const mapStateToProps = state => {
 
     return {
         token: state.auth.token,
         todo: state.getTodo.todo,
-        loading: state.update.loading
+        loading: state.delete.loading,
+
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onUpdate: (todoId, todo, token) => dispatch(actions.updateTodo(todoId, todo, token))
+        onUpdate: (todoId, todo, token) => dispatch(actions.updateTodo(todoId, todo, token)),
+
     }
 }
 

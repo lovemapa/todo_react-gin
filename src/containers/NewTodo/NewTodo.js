@@ -14,6 +14,7 @@ class NewTodo extends Component {
     todoDataHandler = (event) => {
 
         this.props.onAddTodo(this.state.name, this.props.token)
+        this.setState({ name: "" })
 
     }
 
@@ -36,7 +37,7 @@ class NewTodo extends Component {
         if (this.props.loading)
             todo = <Spinner />
         return (
-            
+
             <div className={classes.NewTodo}>
                 {todo}
 

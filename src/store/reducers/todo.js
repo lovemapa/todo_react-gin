@@ -33,7 +33,29 @@ const todoReducer = (state = initialState, actions) => {
                 ...state,
                 todos: arr,
                 loading: false,
-                erro: false
+                error: false
+
+            }
+        }
+
+
+        case actionTypes.DELETED_FETCH: {
+
+            let _id = actions.id
+
+            let arr = [...state.todos] // right way for immutabilty
+
+            let index = arr.findIndex(todo => {
+                return todo._id === _id
+            })
+
+            arr.splice(index, 1)
+
+            return {
+                ...state,
+                todos: arr,
+                loading: false,
+                error: false
 
             }
         }

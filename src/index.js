@@ -12,12 +12,14 @@ import todoReducer from "./store/reducers/todo";
 import newTodoReducer from './store/reducers/new-todo'
 import getTodoReducer from './store/reducers/getTodo';
 import updateTodoReducer from './store/reducers/update-todo'
+import deleteTodoReducer from './store/reducers/delete-todo'
 
 import thunk from 'redux-thunk'
 
 
 const rootReducer = combineReducers({
   signup: signReducer,
+  delete: deleteTodoReducer,
   newTodo: newTodoReducer,
   getTodo: getTodoReducer,
   auth: authReducer,

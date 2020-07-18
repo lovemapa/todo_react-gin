@@ -1,33 +1,35 @@
 import * as actionTypes from '../actions/actionTypes'
 const initailState = {
-    todo: null,
     error: null,
     loading: false
 }
+
+
+
 
 
 const reducer = (state = initailState, actions) => {
 
     switch (actions.type) {
 
-        case actionTypes.UPDATE_TODO_INIT: {
+        case actionTypes.DELETE_TODO_INIT: {
 
             return {
                 ...state,
-                loading: true
+                loading: true,
+
             }
         }
-        case actionTypes.UPDATE_TODO_SUCCEESS: {
+        case actionTypes.DELETE_TODO_SUCCESS: {
 
             return {
                 ...state,
-                todo: actions.todo,
                 error: false,
                 loading: false
             }
         }
 
-        case actionTypes.UPDATE_TODO_FAIL: {
+        case actionTypes.DELETE_TODO_FAIL: {
 
             return {
                 ...state,
@@ -36,6 +38,9 @@ const reducer = (state = initailState, actions) => {
             }
 
         }
+
+
+
 
         default: return state
     }

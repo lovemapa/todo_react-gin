@@ -51,9 +51,10 @@ export const updateTodo = (todoId, todo, token) => {
             url: `todo/updateTodo/${todoId}`,
         }
         axios(options).then(response => {
+            console.log(response.data.data);
 
-            dispatch(updateTodoSuccess(response.data.data))
             dispatch(updatedFetch(response.data.data))
+            dispatch(updateTodoSuccess(response.data.data))
 
         }).catch(error => {
             console.log(error);

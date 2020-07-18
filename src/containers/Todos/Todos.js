@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import Todo from '../../components/Todo/Todo'
-// import classes from './Todos.css'
 import Modal from '../../components/Modal/Modal'
-
 import { connect } from 'react-redux'
-// import { Route, NavLink, Switch, Redirect } from 'react-router-dom'
 import * as actions from '../../store/actions/index'
 
 class Todos extends Component {
@@ -16,15 +13,6 @@ class Todos extends Component {
 
     }
 
-    // componentDidUpdate(prevProps) {
-
-    //     if (prevProps.todos != this.props.todos) {
-    //         // console.log(prevProps.todos);
-
-    //     }
-
-
-    // }
 
 
 
@@ -38,12 +26,14 @@ class Todos extends Component {
     clickedHandler = (id) => {
         this.props.onGetTodo(id, this.props.token)
 
-        this.setState(prevState => {
-            return {
+        this.setState({ isModalVisible: true })
+        // this.setState(prevState => {
+        //     console.log(prevState);
 
-                isModalVisible: !prevState.isModalVisible
-            }
-        })
+        //     return {
+        //     isModalVisible: !prevState.isModalVisible
+        //     }
+        // })
     }
 
     modalClosedHandler = () => {
@@ -52,8 +42,27 @@ class Todos extends Component {
 
     }
 
+    deleteHandler = (_id, token) => {
+
+        this.props.onDelete(_id, token)
+
+    }
 
     render() {
+
+        let display = (
+            this.props.todos.map(todo => (
+                <Todo
+                    key={todo._id}
+                    clicked={() => { this.clickedHandler(todo._id) }}
+                    delete={() => { this.deleteHandler(todo._id, this.props.token) }}
+                    name={todo.name}
+                    date={todo.date}
+                    status={todo.status}
+                />
+            ))
+        )
+
 
         return (
 
@@ -64,15 +73,7 @@ class Todos extends Component {
                     modalClosed={this.modalClosedHandler}
                 />
 
-                {this.props.todos.map(todo => (
-                    <Todo
-                        key={todo._id}
-                        clicked={() => { this.clickedHandler(todo._id) }}
-                        name={todo.name}
-                        date={todo.date}
-                        status={todo.status}
-                    />
-                ))}
+                {display}
             </div>
         )
     }
@@ -89,7 +90,7 @@ const mapStateToProps = state => {
     return {
         todos: state.todo.todos,
         error: state.todo.error,
-        loading: state.todo.loading,
+        loading: state.delete.loading,
         token: state.auth.token,
         todo: state.getTodo.todo
     }
@@ -100,7 +101,8 @@ const mapDispatchStateToProps = dispatch => {
 
     return {
         onFetchTodos: (token) => dispatch(actions.fetchTodos(token)),
-        onGetTodo: (id, token) => dispatch(actions.getTodo(id, token))
+        onGetTodo: (id, token) => dispatch(actions.getTodo(id, token)),
+        onDelete: (todoId, token) => dispatch(actions.deleteTodo(todoId, token))
     }
 }
 
