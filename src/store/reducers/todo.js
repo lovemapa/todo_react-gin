@@ -60,6 +60,16 @@ const todoReducer = (state = initialState, actions) => {
             }
         }
 
+
+        case actionTypes.FETCH_TODOS_FAIL: {
+
+            return {
+                ...state,
+                error: actions.error,
+                loading: false
+            }
+        }
+
         case actionTypes.FETCH_TODOS_SUCCESS: {
 
 
@@ -70,14 +80,7 @@ const todoReducer = (state = initialState, actions) => {
                 error: false
             }
         }
-        case actionTypes.FETCH_TODOS_FAIL: {
 
-            return {
-                ...state,
-                error: actions.error,
-                loading: false
-            }
-        }
 
         default: return state
     }

@@ -1,7 +1,7 @@
 export const INITIALIZE_SIGNUP = 'INITIALIZE_SIGNUP'
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS'
 export const SIGNUP_FAIL = 'SIGNUP_FAIL'
-
+export const SIGNUP_ERROR_FALSE = 'SIGNUP_ERROR_FALSE'
 
 
 
@@ -9,6 +9,7 @@ export const AUTH_START = 'AUTH_START'
 export const AUTH_SUCCESS = 'AUTH_SUCCESS'
 export const AUTH_FAIL = 'AUTH_FAIL'
 export const AUTH_LOGOUT = 'AUTH_LOGOUT'
+export const AUTH_STATUS_SET_FALSE = 'AUTH_STATUS_SET_FALSE'
 export const SET_AUTH_REDIRECT_PATH = 'SET_AUTH_REDIRECT_PATH'
 
 
@@ -21,6 +22,7 @@ export const FETCH_TODOS_FAIL = "FETCH_TODOS_FAIL"
 export const NEW_TODO_INIT = "NEW_TODO_INIT"
 export const NEW_TODO_SUCCESS = "NEW_TODO_SUCCESS"
 export const NEW_TODO_FAIL = "NEW_TODO_FAIL"
+export const NEW_TODO_SET_FALSE = "NEW_TODO_SET_FALSE"
 
 
 export const GET_TODO_INIT = "GET_TODO_INIT"

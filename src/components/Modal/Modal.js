@@ -18,7 +18,6 @@ class Modal extends Component {
 
     componentDidUpdate(prevProps) {
 
-
         if (this.props.todo !== prevProps.todo)
             this.setState({ textarea: this.props.todo.name })
 

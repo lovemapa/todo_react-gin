@@ -27,6 +27,26 @@ export const onSignupError = (error) => {
 }
 
 
+export const signUpSetFalse = () => {
+
+
+    return dispatch => {
+        setTimeout(() => {
+            dispatch(setErrorFalse())
+        }, 1000)
+    }
+
+}
+
+export const setErrorFalse = () => {
+    return {
+        type: actiontypes.SIGNUP_ERROR_FALSE
+    }
+
+}
+
+
+
 export const signup = (userInfo) => {
 
     return dispatch => {
@@ -47,9 +67,9 @@ export const signup = (userInfo) => {
                 dispatch(onSignupSuccess(response.data.data))
 
             }).catch(err => {
-                
-                dispatch(onSignupError(err.response.data.error))
 
+                dispatch(onSignupError(err.response.data.error))
+                dispatch(signUpSetFalse())
             })
 
     }

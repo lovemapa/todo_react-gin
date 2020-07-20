@@ -33,6 +33,14 @@ const reducer = (state = initialState, actions) => {
                 error: actions.error,
             }
 
+        case actionTypes.SIGNUP_ERROR_FALSE: {
+
+            return {
+                ...state,
+                error: null
+            }
+        }
+
 
         default: return state
     }

@@ -8,7 +8,7 @@ import Spinner from '../../components/UI/Spinner/Spinner'
 class NewTodo extends Component {
 
     state = {
-        name: ""
+        name: "",
     }
 
     todoDataHandler = (event) => {
@@ -33,6 +33,12 @@ class NewTodo extends Component {
             <button onClick={this.todoDataHandler}>Add</button>
         </div>)
 
+        let errorMessage = null
+        if (this.props.error) {
+            errorMessage = (<h4 className={classes.error}>
+                {this.props.error.data.error}
+            </h4>)
+        }
 
         if (this.props.loading)
             todo = <Spinner />
@@ -40,6 +46,7 @@ class NewTodo extends Component {
 
             <div className={classes.NewTodo}>
                 {todo}
+                {errorMessage}
 
             </div>
         )

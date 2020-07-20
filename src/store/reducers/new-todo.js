@@ -36,6 +36,13 @@ const reducer = (state = initailState, actions) => {
                 loading: false
             }
         }
+        case actionTypes.NEW_TODO_SET_FALSE: {
+
+            return {
+                ...state,
+                error: null
+            }
+        }
 
 
         default: return state

@@ -1,6 +1,7 @@
 import * as actionTypes from './actionTypes'
 import axios from '../../axios-todo'
 
+
 export const authStart = () => {
 
     return {
@@ -58,8 +59,9 @@ export const auth = (email, password) => {
                 dispatch(authSuccess(response.data.data.token, response.data.data.id))
                 dispatch(checkAuthExpired(response.data.data.tokenExpiresAt / 1000))
             }).catch(error => {
-                
+
                 dispatch(authFail(error.response.data.error))
+                dispatch(authSetFalse())
             })
     }
 
@@ -76,6 +78,24 @@ export const logout = () => {
 }
 
 
+export const authSetFalse = () => {
+
+    return dispatch => {
+        setTimeout(() => {
+            dispatch(setErrorFalse())
+        }, 1000)
+    }
+
+}
+
+export const setErrorFalse = () => {
+    return {
+        type: actionTypes.AUTH_STATUS_SET_FALSE,
+    }
+
+}
+
+
 
 export const authCheckState = () => {
     return dispatch => {
@@ -83,6 +103,7 @@ export const authCheckState = () => {
         const token = localStorage.getItem('token')
         if (!token) {
             dispatch(logout())
+
         }
         else {
             const expirationTime = new Date(localStorage.getItem('expirationTime'))

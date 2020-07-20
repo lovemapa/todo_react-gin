@@ -23,6 +23,28 @@ export const newTodoFail = (error) => {
     }
 }
 
+
+
+export const newTodoSetFalse = () => {
+
+
+    return dispatch => {
+        setTimeout(() => {
+            dispatch(setErrorFalse())
+        }, 1000)
+    }
+
+}
+
+export const setErrorFalse = () => {
+    return {
+        type: actionTypes.NEW_TODO_SET_FALSE,
+    }
+
+}
+
+
+
 export const newTodo = (todoData, token) => {
 
     return dispatch => {
@@ -44,8 +66,9 @@ export const newTodo = (todoData, token) => {
             dispatch(newTodoSuccess(response.data.data))
 
         }).catch(error => {
-            
+
             dispatch(newTodoFail(error.response))
+            dispatch(newTodoSetFalse())
 
 
         })

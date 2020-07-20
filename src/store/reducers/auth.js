@@ -47,6 +47,14 @@ const authReducer = (state = initialState, action) => {
             }
         }
 
+        case actionTypes.AUTH_STATUS_SET_FALSE: {
+
+            return {
+                ...state,
+                error: null
+            }
+        }
+
         default: return state
     }
 }
