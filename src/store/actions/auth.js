@@ -60,7 +60,14 @@ export const auth = (email, password) => {
                 dispatch(checkAuthExpired(response.data.data.tokenExpiresAt / 1000))
             }).catch(error => {
 
-                dispatch(authFail(error.response.data.error))
+                if (error.response === undefined) {
+
+                    dispatch(authFail("Server not connnected"))
+                }
+                else {
+                    dispatch(authFail(error.response.data.error))
+                }
+
                 dispatch(authSetFalse())
             })
     }

@@ -32,11 +32,11 @@ class NewTodo extends Component {
 
             <button onClick={this.todoDataHandler}>Add</button>
         </div>)
-
+ 
         let errorMessage = null
         if (this.props.error) {
             errorMessage = (<h4 className={classes.error}>
-                {this.props.error.data.error}
+                {this.props.error}
             </h4>)
         }
 

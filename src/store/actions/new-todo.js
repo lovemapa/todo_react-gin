@@ -67,7 +67,15 @@ export const newTodo = (todoData, token) => {
 
         }).catch(error => {
 
-            dispatch(newTodoFail(error.response))
+
+            if (error.response === undefined) {
+
+                dispatch(newTodoFail("Server not connnected"))
+            }
+            else {
+                dispatch(newTodoFail(error.response.data.error))
+            }
+
             dispatch(newTodoSetFalse())
 
 

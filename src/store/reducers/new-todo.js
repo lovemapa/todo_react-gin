@@ -29,6 +29,7 @@ const reducer = (state = initailState, actions) => {
         }
 
         case actionTypes.NEW_TODO_FAIL: {
+            console.log(actions.error);
 
             return {
                 ...state,

@@ -3,6 +3,7 @@ import Todo from '../../components/Todo/Todo'
 import Modal from '../../components/Modal/Modal'
 import { connect } from 'react-redux'
 import * as actions from '../../store/actions/index'
+import classes from './Todos.css'
 
 class Todos extends Component {
 
@@ -63,6 +64,18 @@ class Todos extends Component {
             ))
         )
 
+
+
+        if (this.props.error === 'Failed to fetch Todos.Server not connnected') {
+            display = (<div className={classes.error}>
+                {this.props.error}
+            </div>)
+        }
+        else if (this.props.todos.length <= 0) {
+            display = (<div className={classes.error}>
+                Nothing to display. Add a new one
+            </div>)
+        }
 
         return (
 

@@ -68,7 +68,14 @@ export const signup = (userInfo) => {
 
             }).catch(err => {
 
-                dispatch(onSignupError(err.response.data.error))
+
+                if (err.response === undefined) {
+
+                    dispatch(onSignupError("Server not connnected"))
+                }
+                else {
+                    dispatch(onSignupError(err.response.data.error))
+                }
                 dispatch(signUpSetFalse())
             })
 

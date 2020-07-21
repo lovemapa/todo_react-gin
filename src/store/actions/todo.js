@@ -60,14 +60,20 @@ export const fetchTodos = (token) => {
                 })
             }
             dispatch(fetchTodosuccess(fetchedOrders))
-       
-
-
-        }).catch(err => {
 
 
 
-            dispatch(fetchTodoFail(err.response))
+        }).catch(error => {
+
+
+            if (error.response === undefined) {
+
+                dispatch(fetchTodoFail("Failed to fetch Todos.Server not connnected"))
+            }
+            else {
+                dispatch(fetchTodoFail(error.response))
+            }
+
 
         })
     }

@@ -28,3 +28,13 @@
   background-color: orange;
     color: rgb(9, 25, 170);
 }
+
+
+.error{
+  width: 500px; 
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 40px;
+  background: #000; 
+  color: #fff;
+}
