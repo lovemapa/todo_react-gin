@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './NavigationItems.css'
 import Navitem from '../../components/UI/NavItem/Navitem'
-import Aux from '../../hoc/Aux/Aux'
+import Aux from '../../hoc/Aux/Auxilliary'
 
 
 
