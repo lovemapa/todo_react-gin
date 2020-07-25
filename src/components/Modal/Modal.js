@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import classes from './Modal.css'
-import Aux from '../../hoc/Aux/Auxilliary'
+import Aux from '../../hoc/Auxilliary/Auxilliary'
 import Backdrop from '../UI/Backdrop/Backdrop'
 import { connect } from 'react-redux'
 import * as actions from '../../store/actions/index'
