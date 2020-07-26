@@ -52,6 +52,7 @@ class Todos extends Component {
     render() {
 
         let display = (
+
             this.props.todos.map(todo => (
                 <Todo
                     key={todo._id}
@@ -79,7 +80,7 @@ class Todos extends Component {
 
         return (
 
-            <div >
+            <div className={classes.cardWapper} >
 
                 <Modal
                     show={this.state.isModalVisible}
